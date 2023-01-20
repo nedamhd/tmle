@@ -955,7 +955,16 @@ estimateQ <- function (Y,Z,A,W, Delta, Q, Qbounds, Qform, maptoYstar,
 	.expandLib <- function(SL.lib){
 		if (is.list(SL.lib)){
 			counts <- sapply(SL.lib, length)
-			numExtra <-  sum(counts > 2)
+			
+			
+			   ### The number of rows has been edited when the number of library is greater than 2
+                          Extra = which(counts > 2)
+                          numExtra <-  sum(counts[Extra] )-2*length(Extra)
+                          #  numExtra <-  sum(counts > 2)
+			### end edit ##
+			
+			
+			
 			m <- matrix("", nrow = length(SL.lib) + numExtra, ncol = 2)
 			rowIndex <- 1
 			for (i in 1:length(counts)){

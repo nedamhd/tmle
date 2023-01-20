@@ -1049,6 +1049,8 @@ estimateQ <- function (Y,Z,A,W, Delta, Q, Qbounds, Qform, maptoYstar,
   					newX <- rbind(newX, X10, X11)
   					newX.id <- rep(id, 5)
   				}
+			
+			# BUG: SL.version is numeric but `packageDescription("SuperLearner")$Version` is character.
   				if (packageDescription("SuperLearner")$Version < SL.version){
     				arglist <- list(Y=Y[Delta==1],X=X[Delta==1,], newX=newX, SL.library=SL.library,
   							V=V, family=family, save.fit.library=FALSE, id=id[Delta==1])

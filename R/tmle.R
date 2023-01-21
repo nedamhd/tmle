@@ -1166,8 +1166,10 @@ estimateQ <- function (Y,Z,A,W, Delta, Q, Qbounds, Qform, maptoYstar,
 	retain <- which(abs(beta) > 0)
 	if (length(retain) < min.retain ){
 		if (length(unique(A)) == 1){
+			# Error: Error in cor(A, W) : 'y' must be numeric
 			retain <-  unique( c(retain, order(abs(cor(Delta, W)))[1:min.retain]))[1:min.retain]
 		} else {
+			# Error: Error in cor(A, W) : 'y' must be numeric
 			retain <- unique( c(retain, order(abs(cor(A, W)))[1:min.retain]))[1:min.retain]
 		}
 	} 
